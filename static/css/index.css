@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.shine-border {
+    position: relative;
+    border: 0px solid transparent;
+    border-radius: 100%;
+}
+
+.shine-border:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -3px;
+    animation: shine 6s linear infinite;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #e5cf3f 20%, #41dcdc 40%, #a46ae3 68%, #e5cf3f 80%);
+    background-size: 200% auto;
+}
+
+.shine-border:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -3px;
+    animation: shine 6s linear infinite;
+    border-radius: inherit;
+    opacity: 0;
+    background: linear-gradient(90deg, #e5cf3f 20%, #41dcdc 40%, #a46ae3 68%, #e5cf3f 80%);
+    background-size: 200% auto;
+    filter: blur(30px);
+}
+
+/* animate number */
+
+.ticker-view {
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+    position: relative;
+}
+
+.number-placeholder {
+    visibility: hidden;
+}
+
+.ticker-column-container {
+    position: relative;
+}
+
+.ticker-column {
+    position: absolute;
+    height: 1000%;
+    bottom: 0;
+}
+
+.ticker-digit {
+    height: 10%;
+}
+
+.ticker-column.increase {
+    -webkit-animation: pulseGreen 0.5s cubic-bezier(0.4, 0, 0.6, 1) 1;
+    animation: pulseGreen 0.5s cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+@-webkit-keyframes pulseGreen {
+    0%,
+    to {
+        color: #fff;
+    }
+    50% {
+        --tw-text-opacity: 1;
+        color: rgba(163, 163, 163, var(--tw-text-opacity));
+    }
+}
+
+@keyframes pulseGreen {
+    0%,
+    to {
+        color: #fff;
+    }
+    50% {
+        --tw-text-opacity: 1;
+        color: rgba(163, 163, 163, var(--tw-text-opacity));
+    }
+}
